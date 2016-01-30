@@ -1,0 +1,31 @@
+{
+    "name": "rido/mijndomeinreseller",
+    "type": "library",
+    "description": "PHP Client for the MijnDomeinReseller API",
+    "keywords": [
+        "api",
+        "php",
+        "mijndomeinreseller",
+        "mdr"
+    ],
+    "homepage": "https://github.com/Rido/MijnDomeinReseller",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rick Doorakkers",
+            "email": "rickdoorakkers@gmail.com"
+        },
+        {
+            "name": "MijnDomeinReseller",
+            "email": "info@mijndomeinreseller.nl"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rido\\MDR\\": "src/Rido/MDR"
+        }
+    }
+}
