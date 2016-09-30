@@ -54,19 +54,49 @@ class Connection
     }
 
     /**
-     * @return Client
+     * @param string $command
+     * @param array  $attributes
+     * @return array
      */
-    private function client()
+    public function put($command, array $attributes)
     {
-        if ($this->client) {
-            return $this->client;
-        }
+        $request = $this->createRequest($command, $attributes);
+        $response = $this->client()->send($request);
 
-        $this->client = new Client([
-            'http_errors' => true
-        ]);
+        return $this->parseResponse($response);
+    }
 
-        return $this->client;
+    /**
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param string $username
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param string $password
+     * @param bool   $passwordIsMd5
+     */
+    public function setPassword($password, $passwordIsMd5 = false)
+    {
+        $this->password = $passwordIsMd5 ? $password : md5($password);
     }
 
     /**
@@ -103,6 +133,22 @@ class Connection
         $params = array_merge($params, $additionalParams);
 
         return $this->apiUrl . '?' . http_build_query($params);
+    }
+
+    /**
+     * @return Client
+     */
+    private function client()
+    {
+        if ($this->client) {
+            return $this->client;
+        }
+
+        $this->client = new Client([
+            'http_errors' => true
+        ]);
+
+        return $this->client;
     }
 
     /**
@@ -170,38 +216,5 @@ class Connection
         else {
             $this->responseData[$line[0]] = trim($line[1]);
         }
-    }
-
-    /**
-     * @return string
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /**
-     * @param string $username
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * @param string $password
-     * @param bool   $passwordIsMd5
-     */
-    public function setPassword($password, $passwordIsMd5 = false)
-    {
-        $this->password = $passwordIsMd5 ? $password : md5($password);
     }
 }
