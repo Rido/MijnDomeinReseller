@@ -136,6 +136,7 @@ class Connection
     private function parseResponseLines(array $lines)
     {
         $errors = [];
+        $this->responseData = [];
 
         foreach ($lines as $line) {
             $exp = explode('=', $line);
