@@ -47,14 +47,10 @@ class Connection
      */
     public function get($command, array $additionalParams = [])
     {
-        try {
-            $request = $this->createRequest($command, $additionalParams);
-            $response = $this->client()->send($request);
+        $request = $this->createRequest($command, $additionalParams);
+        $response = $this->client()->send($request);
 
-            return $this->parseResponse($response);
-        } catch (Exception $e) {
-
-        }
+        return $this->parseResponse($response);
     }
 
     /**
@@ -122,7 +118,7 @@ class Connection
             $lines = explode(PHP_EOL, $content);
 
             if ($lines && $this->parseResponseLines($lines)) {
-                 return $this->responseData;
+                return $this->responseData;
             }
             else {
                 throw new ApiException('No response');
