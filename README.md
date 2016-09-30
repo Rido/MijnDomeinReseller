@@ -1,9 +1,11 @@
-# MijnDomeinReseller
+# MijnDomeinReseller (MDR)
 
-PHP Client for the MijnDomeinReseller API.
+[![Build Status](https://travis-ci.org/Rido/MijnDomeinReseller.svg?branch=develop)](https://travis-ci.org/Rido/MijnDomeinReseller)
 
-This class is based on the default PHP MDR API class with some small improvements.
-In the future I will improve this class.
+PHP Client for the MDR API.
+
+This develop branch is the new modern PHP client for the MDR API. I'm currently working on this version.
+I will merge it into the master branch when it's finished.
 
 ## More information
 https://www.mijndomeinreseller.nl/api/
