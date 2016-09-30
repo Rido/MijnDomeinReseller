@@ -1,5 +1,6 @@
 <?php namespace Rido\MDR;
 
+use Rido\MDR\Models\Domain;
 use Rido\MDR\Models\Whois;
 
 /**
@@ -24,6 +25,19 @@ class MijnDomeinReseller
         $this->connection = $connection;
     }
 
+    /**
+     * @param array $attributes
+     * @return Domain
+     */
+    public function domain(array $attributes = [])
+    {
+        return new Domain($this->connection, $attributes);
+    }
+
+    /**
+     * @param array $attributes
+     * @return Whois
+     */
     public function whois(array $attributes = [])
     {
         return new Whois($this->connection, $attributes);
