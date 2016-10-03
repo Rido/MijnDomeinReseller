@@ -1,12 +1,12 @@
-<?php namespace Rido\MDR;
+<?php
+
+namespace Rido\MDR;
 
 use Rido\MDR\Models\Domain;
 use Rido\MDR\Models\Whois;
 
 /**
- * Class MijnDomeinReseller
- *
- * @package Rido\MDR
+ * Class MijnDomeinReseller.
  */
 class MijnDomeinReseller
 {
@@ -27,6 +27,7 @@ class MijnDomeinReseller
 
     /**
      * @param array $attributes
+     *
      * @return Domain
      */
     public function domain(array $attributes = [])
@@ -36,6 +37,7 @@ class MijnDomeinReseller
 
     /**
      * @param array $attributes
+     *
      * @return Whois
      */
     public function whois(array $attributes = [])

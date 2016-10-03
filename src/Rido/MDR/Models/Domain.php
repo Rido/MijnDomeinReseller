@@ -1,4 +1,6 @@
-<?php namespace Rido\MDR\Models;
+<?php
+
+namespace Rido\MDR\Models;
 
 class Domain extends Model
 {
@@ -82,7 +84,7 @@ class Domain extends Model
         if (count($exp) == 2) {
             $result = $this->connection->get('domain_get_details', [
                 'domein' => $exp[0],
-                'tld'    => $exp[1]
+                'tld'    => $exp[1],
             ]);
 
             return $this->createObjectFromResponse($result);
