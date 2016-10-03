@@ -1,4 +1,6 @@
-<?php namespace Rido\MDR\Models;
+<?php
+
+namespace Rido\MDR\Models;
 
 use Rido\MDR\Connection;
 
@@ -45,6 +47,7 @@ abstract class Model
 
     /**
      * @param $key
+     *
      * @return bool
      */
     protected function isFillable($key)
@@ -70,6 +73,7 @@ abstract class Model
 
     /**
      * @param $result
+     *
      * @return mixed
      */
     public function createObjectFromResponse($result)
@@ -83,6 +87,7 @@ abstract class Model
 
     /**
      * @param $key
+     *
      * @return mixed
      */
     public function __get($key)

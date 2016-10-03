@@ -1,4 +1,6 @@
-<?php namespace Rido\MDR;
+<?php
+
+namespace Rido\MDR;
 
 use Exception;
 use GuzzleHttp\Client;
@@ -14,7 +16,7 @@ class Connection
     private $apiUrl = 'https://manager.mijndomeinreseller.nl/api/';
 
     /**
-     * Always use md5
+     * Always use md5.
      *
      * @var string
      */
@@ -43,6 +45,7 @@ class Connection
     /**
      * @param       $command
      * @param array $additionalParams
+     *
      * @return array
      */
     public function get($command, array $additionalParams = [])
@@ -56,6 +59,7 @@ class Connection
     /**
      * @param string $command
      * @param array  $attributes
+     *
      * @return array
      */
     public function put($command, array $attributes)
@@ -103,6 +107,7 @@ class Connection
      * @param        $command
      * @param array  $additionalParams
      * @param string $method
+     *
      * @return Request
      */
     private function createRequest($command, array $additionalParams = [], $method = 'GET')
@@ -117,7 +122,9 @@ class Connection
     /**
      * @param string $command
      * @param array  $additionalParams
+     *
      * @return string
+     *
      * @internal param null|string $type
      * @internal param array $additionalAttributes
      */
@@ -127,12 +134,12 @@ class Connection
             'user'     => $this->username,
             'pass'     => $this->password,
             'authtype' => $this->authType,
-            'command'  => $command
+            'command'  => $command,
         ];
 
         $params = array_merge($params, $additionalParams);
 
-        return $this->apiUrl . '?' . http_build_query($params);
+        return $this->apiUrl.'?'.http_build_query($params);
     }
 
     /**
@@ -145,7 +152,7 @@ class Connection
         }
 
         $this->client = new Client([
-            'http_errors' => true
+            'http_errors' => true,
         ]);
 
         return $this->client;
@@ -153,8 +160,10 @@ class Connection
 
     /**
      * @param Response $response
-     * @return array
+     *
      * @throws ApiException
+     *
+     * @return array
      */
     private function parseResponse(Response $response)
     {
@@ -165,8 +174,7 @@ class Connection
 
             if ($lines && $this->parseResponseLines($lines)) {
                 return $this->responseData;
-            }
-            else {
+            } else {
                 throw new ApiException('No response');
             }
         } catch (Exception $e) {
@@ -176,8 +184,10 @@ class Connection
 
     /**
      * @param array $lines
-     * @return boolean
+     *
      * @throws ApiException
+     *
+     * @return bool
      */
     private function parseResponseLines(array $lines)
     {
@@ -190,8 +200,7 @@ class Connection
             if (count($exp) == 2) {
                 if (strpos($exp[0], 'errnotxt') === 0) {
                     $errors[] = $exp[1];
-                }
-                elseif ($exp[0] != 'errcount' && $exp[0] != 'done' && strpos($exp[0], 'errno') === false) {
+                } elseif ($exp[0] != 'errcount' && $exp[0] != 'done' && strpos($exp[0], 'errno') === false) {
                     $this->parseLine($exp);
                 }
             }
@@ -199,8 +208,7 @@ class Connection
 
         if (!$errors) {
             return true;
-        }
-        else {
+        } else {
             throw new ApiException(implode(' | ', $errors));
         }
     }
@@ -212,8 +220,7 @@ class Connection
     {
         if (preg_match('/^([A-Za-z_]+)\[(\d+)\]/', $line[0], $matches) && count($matches) == 3) {
             $this->responseData['items'][$matches[2]][$matches[1]] = trim($line[1]);
-        }
-        else {
+        } else {
             $this->responseData[$line[0]] = trim($line[1]);
         }
     }
