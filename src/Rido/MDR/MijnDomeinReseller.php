@@ -2,6 +2,7 @@
 
 namespace Rido\MDR;
 
+use Rido\MDR\Models\Contact;
 use Rido\MDR\Models\Domain;
 use Rido\MDR\Models\Whois;
 
@@ -23,6 +24,16 @@ class MijnDomeinReseller
     public function __construct(Connection $connection)
     {
         $this->connection = $connection;
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return Contact
+     */
+    public function contact(array $attributes = [])
+    {
+        return new Contact($this->connection, $attributes);
     }
 
     /**
