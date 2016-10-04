@@ -1,4 +1,6 @@
-<?php namespace Rido\MDR\Models;
+<?php
+
+namespace Rido\MDR\Models;
 
 class Tld extends Model
 {
@@ -36,12 +38,13 @@ class Tld extends Model
 
     /**
      * @param $tld
+     *
      * @return mixed
      */
     public function find($tld)
     {
         $result = $this->connection->get('tld_get_details', [
-            'tld' => $tld
+            'tld' => $tld,
         ]);
 
         if (!isset($result['tld'])) {

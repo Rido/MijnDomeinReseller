@@ -1,4 +1,6 @@
-<?php namespace Rido\MDR\Models;
+<?php
+
+namespace Rido\MDR\Models;
 
 class Nameserver extends Model
 {
@@ -35,6 +37,7 @@ class Nameserver extends Model
 
     /**
      * @param array $attributes
+     *
      * @return array
      */
     public function create(array $attributes)

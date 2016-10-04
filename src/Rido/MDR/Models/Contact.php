@@ -1,4 +1,6 @@
-<?php namespace Rido\MDR\Models;
+<?php
+
+namespace Rido\MDR\Models;
 
 class Contact extends Model
 {
@@ -39,12 +41,13 @@ class Contact extends Model
 
     /**
      * @param $id
+     *
      * @return mixed
      */
     public function find($id)
     {
         $result = $this->connection->get('contact_get_details', [
-            'contact_id' => $id
+            'contact_id' => $id,
         ]);
 
         if (!isset($result['contact_id'])) {
@@ -56,6 +59,7 @@ class Contact extends Model
 
     /**
      * @param array $attributes
+     *
      * @return array
      */
     public function create(array $attributes)
