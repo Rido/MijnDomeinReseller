@@ -1,6 +1,7 @@
 # MijnDomeinReseller (MDR)
 
 [![Build Status](https://travis-ci.org/Rido/MijnDomeinReseller.svg?branch=develop)](https://travis-ci.org/Rido/MijnDomeinReseller)
+[![License](https://poser.pugx.org/rido/mijndomeinreseller/license)](https://packagist.org/packages/rido/mijndomeinreseller)
 
 PHP Client for the MDR API.
 
