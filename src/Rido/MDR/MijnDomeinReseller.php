@@ -4,6 +4,7 @@ namespace Rido\MDR;
 
 use Rido\MDR\Models\Contact;
 use Rido\MDR\Models\Domain;
+use Rido\MDR\Models\Nameserver;
 use Rido\MDR\Models\Whois;
 
 /**
@@ -44,6 +45,16 @@ class MijnDomeinReseller
     public function domain(array $attributes = [])
     {
         return new Domain($this->connection, $attributes);
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return Nameserver
+     */
+    public function nameserver(array $attributes = [])
+    {
+        return new Nameserver($this->connection, $attributes);
     }
 
     /**
