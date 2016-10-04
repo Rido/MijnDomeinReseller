@@ -209,7 +209,7 @@ class Connection
         if (!$errors) {
             return true;
         } else {
-            throw new ApiException(implode(' | ', $errors));
+            throw new ApiException(implode('|', $errors));
         }
     }
 
