@@ -3,6 +3,8 @@
 namespace Rido\MDR;
 
 use Rido\MDR\Models\Contact;
+use Rido\MDR\Models\Dns;
+use Rido\MDR\Models\DnsRecord;
 use Rido\MDR\Models\Domain;
 use Rido\MDR\Models\Nameserver;
 use Rido\MDR\Models\Tld;
@@ -36,6 +38,26 @@ class MijnDomeinReseller
     public function contact(array $attributes = [])
     {
         return new Contact($this->connection, $attributes);
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return Dns
+     */
+    public function dns(array $attributes = [])
+    {
+        return new Dns($this->connection, $attributes);
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return DnsRecord
+     */
+    public function dnsRecord(array $attributes = [])
+    {
+        return new DnsRecord($this->connection, $attributes);
     }
 
     /**
