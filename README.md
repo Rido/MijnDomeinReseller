@@ -7,7 +7,6 @@
 PHP Client for the MDR API.
 
 This develop branch is the new modern PHP client for the MDR API. I'm currently working on this version.
-I will merge it into the master branch when it's finished.
 
 ## Usage
 ```php
