@@ -2,9 +2,15 @@
 
 namespace Rido\MDR\Models;
 
+use InvalidArgumentException;
+
 class Domain extends Model
 {
+    /**
+     * @var array
+     */
     protected $fillable = [
+        'domains',
         'registrant_id',
         'registrant_bedrijfsnaam',
         'registrant_rechtsvorm',
@@ -50,6 +56,12 @@ class Domain extends Model
         'tech_land',
         'tech_tel',
         'tech_email',
+        'tld_es_admin_type_id',
+        'tld_es_admin_idnum',
+        'tld_es_tech_type_id',
+        'tld_es_tech_idnum',
+        'tld_es_bill_type_id',
+        'tld_es_bill_idnum',
         'bill_id',
         'autorenew',
         'lock',
@@ -62,21 +74,52 @@ class Domain extends Model
         'ns6',
         'ns7',
         'gebruik_dns',
+        'dns_template',
         'authkey',
         'verloopdatum',
         'inaccountdatum',
         'status',
+        'duur',
     ];
 
+    /**
+     * @return mixed
+     */
     public function get()
     {
-        if ($result = $this->connection->get('domain_list')) {
+        $result = $this->connection->get('domain_list');
+
+        if (isset($result['items'])) {
+            $result = $this->processDomains($result);
+
             return $result['items'];
         }
 
-        return false;
+        return [];
     }
 
+    /**
+     * @return mixed
+     */
+    public function getDeleted()
+    {
+        $result = $this->connection->get('domain_list_delete');
+
+        if (isset($result['items'])) {
+            $result = $this->processDomains($result);
+
+            return $result['items'];
+        }
+
+        return [];
+    }
+
+    /**
+     * @param $domain
+     * @param $tld
+     *
+     * @return mixed
+     */
     public function find($domain, $tld)
     {
         $result = $this->connection->get('domain_get_details', [
@@ -85,5 +128,263 @@ class Domain extends Model
         ]);
 
         return $this->createObjectFromResponse($result);
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return array
+     */
+    public function register(array $attributes = [])
+    {
+        $this->fill($attributes);
+
+        if ($this->domein && $this->tld) {
+            $result = $this->connection->put('domain_register', $this->attributes);
+
+            return $result;
+        }
+
+        throw new InvalidArgumentException();
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return array
+     */
+    public function transfer(array $attributes = [])
+    {
+        $this->fill($attributes);
+
+        if ($this->domein && $this->tld) {
+            $result = $this->connection->put('domain_transfer', $this->attributes);
+
+            return $result;
+        }
+
+        throw new InvalidArgumentException();
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return array
+     */
+    public function delete(array $attributes = [])
+    {
+        $this->fill($attributes);
+
+        if ($this->domein && $this->tld) {
+            $result = $this->connection->put('domain_delete', [
+                'domein' => $this->domein,
+                'tld'    => $this->tld,
+            ]);
+
+            return $result;
+        }
+
+        throw new InvalidArgumentException();
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return array
+     */
+    public function authInfo(array $attributes = [])
+    {
+        $this->fill($attributes);
+
+        if ($this->domein && $this->tld) {
+            $result = $this->connection->get('domain_auth_info', [
+                'domein' => $this->domein,
+                'tld'    => $this->tld,
+            ]);
+
+            return $result;
+        }
+
+        throw new InvalidArgumentException();
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return array
+     */
+    public function updateContacts(array $attributes = [])
+    {
+        $this->fill($attributes);
+
+        if ($this->domein && $this->tld) {
+            $result = $this->connection->get('domain_modify_contacts', $this->attributes);
+
+            return $result;
+        }
+
+        throw new InvalidArgumentException();
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return array
+     */
+    public function trade(array $attributes = [])
+    {
+        $this->fill($attributes);
+
+        if ($this->domein && $this->tld) {
+            $result = $this->connection->get('domain_trade', $this->attributes);
+
+            return $result;
+        }
+
+        throw new InvalidArgumentException();
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return array
+     */
+    public function updateNameservers(array $attributes = [])
+    {
+        $this->fill($attributes);
+
+        if ($this->domein && $this->tld) {
+            $result = $this->connection->get('domain_modify_ns', $this->attributes);
+
+            return $result;
+        }
+
+        throw new InvalidArgumentException();
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return array
+     */
+    public function pushRequest(array $attributes = [])
+    {
+        $this->fill($attributes);
+
+        if ($this->domein && $this->tld && $this->authkey) {
+            $result = $this->connection->get('domain_push_request', [
+                'domein'  => $this->domein,
+                'tld'     => $this->tld,
+                'authkey' => $this->authkey,
+            ]);
+
+            return $result;
+        }
+
+        throw new InvalidArgumentException();
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return array
+     */
+    public function renew(array $attributes = [])
+    {
+        $this->fill($attributes);
+
+        if ($this->domein && $this->tld && $this->duur) {
+            $result = $this->connection->get('domain_renew', [
+                'domein' => $this->domein,
+                'tld'    => $this->tld,
+                'duur'   => $this->duur,
+            ]);
+
+            return $result;
+        }
+
+        throw new InvalidArgumentException();
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return array
+     */
+    public function restore(array $attributes = [])
+    {
+        $this->fill($attributes);
+
+        if ($this->domein && $this->tld) {
+            $result = $this->connection->get('domain_restore', [
+                'domein' => $this->domein,
+                'tld'    => $this->tld,
+            ]);
+
+            return $result;
+        }
+
+        throw new InvalidArgumentException();
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return array
+     */
+    public function setAutoRenew(array $attributes = [])
+    {
+        $this->fill($attributes);
+
+        if ($this->domein && $this->tld && $this->autorenew) {
+            $result = $this->connection->get('domain_set_autorenew', [
+                'domein'             => $this->domein,
+                'tld'                => $this->tld,
+                'autorenew'          => $this->autorenew,
+                'registrant_approve' => $this->registrant_approve,
+            ]);
+
+            return $result;
+        }
+
+        throw new InvalidArgumentException();
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return array
+     */
+    public function setLock(array $attributes = [])
+    {
+        $this->fill($attributes);
+
+        if ($this->domein && $this->tld && $this->set_lock) {
+            $result = $this->connection->get('domain_set_lock', [
+                'domein'   => $this->domein,
+                'tld'      => $this->tld,
+                'set_lock' => $this->set_lock,
+            ]);
+
+            return $result;
+        }
+
+        throw new InvalidArgumentException();
+    }
+
+    /**
+     * @param $result
+     *
+     * @return mixed
+     */
+    protected function processDomains($result)
+    {
+        if (isset($result['items']) && count($result['items'])) {
+            foreach ($result['items'] as $id => $item) {
+                $result['items'][$id] = new Domain($this->connection, $item);
+            }
+        }
+
+        return $result;
     }
 }
