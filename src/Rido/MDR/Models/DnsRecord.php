@@ -34,6 +34,7 @@ class DnsRecord extends Model
 
     /**
      * @param array $attributes
+     *
      * @return array
      */
     public function update(array $attributes = [])
@@ -47,6 +48,7 @@ class DnsRecord extends Model
 
     /**
      * @param array $attributes
+     *
      * @return array
      */
     public function remove(array $attributes = [])
