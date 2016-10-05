@@ -381,7 +381,7 @@ class Domain extends Model
     {
         if (isset($result['items']) && count($result['items'])) {
             foreach ($result['items'] as $id => $item) {
-                $result['items'][$id] = new Domain($this->connection, $item);
+                $result['items'][$id] = new self($this->connection, $item);
             }
         }
 
