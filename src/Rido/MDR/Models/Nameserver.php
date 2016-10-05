@@ -24,7 +24,7 @@ class Nameserver extends Model
     ];
 
     /**
-     * @return bool
+     * @return mixed
      */
     public function get()
     {
