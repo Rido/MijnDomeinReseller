@@ -7,11 +7,6 @@ use Rido\MDR\Connection;
 abstract class Model
 {
     /**
-     * @var Connection
-     */
-    protected $connection;
-
-    /**
      * @var array
      */
     protected $attributes = [];
@@ -20,6 +15,11 @@ abstract class Model
      * @var array
      */
     protected $fillable = [];
+
+    /**
+     * @var Connection
+     */
+    protected $connection;
 
     /**
      * Model constructor.
@@ -31,28 +31,6 @@ abstract class Model
     {
         $this->connection = $connection;
         $this->fill($attributes);
-    }
-
-    /**
-     * @param array $attributes
-     */
-    protected function fill(array $attributes = [])
-    {
-        foreach ($attributes as $key => $value) {
-            if ($this->isFillable($key)) {
-                $this->attributes[$key] = $value;
-            }
-        }
-    }
-
-    /**
-     * @param $key
-     *
-     * @return bool
-     */
-    protected function isFillable($key)
-    {
-        return in_array($key, $this->fillable);
     }
 
     /**
@@ -106,5 +84,27 @@ abstract class Model
         if ($this->isFillable($key)) {
             $this->attributes[$key] = $value;
         }
+    }
+
+    /**
+     * @param array $attributes
+     */
+    protected function fill(array $attributes = [])
+    {
+        foreach ($attributes as $key => $value) {
+            if ($this->isFillable($key)) {
+                $this->attributes[$key] = $value;
+            }
+        }
+    }
+
+    /**
+     * @param $key
+     *
+     * @return bool
+     */
+    protected function isFillable($key)
+    {
+        return in_array($key, $this->fillable);
     }
 }
