@@ -50,6 +50,8 @@ class Connection
      */
     public function get($command, array $additionalParams = [])
     {
+        $this->responseData = $additionalParams;
+
         $request = $this->createRequest($command, $additionalParams);
         $response = $this->client()->send($request);
 
@@ -192,7 +194,6 @@ class Connection
     private function parseResponseLines(array $lines)
     {
         $errors = [];
-        $this->responseData = [];
 
         foreach ($lines as $line) {
             $exp = explode('=', $line);
