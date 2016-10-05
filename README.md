@@ -32,6 +32,21 @@ $domains = $domain->get();
 var_dump($domains); 
 ```
 
+## Todo
+- [ ] Billing
+- [x] Contact
+- [x] Dns
+- [x] DnsRecord
+- [ ] DnsSec
+- [ ] DnsSecRecord
+- [x] Domain
+- [x] Nameserver
+- [ ] NameserverGlue
+- [ ] NewGtld
+- [x] Tld
+- [ ] Transfer
+- [x] Whois
+
 ## More information
 https://www.mijndomeinreseller.nl/api/
 
