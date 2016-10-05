@@ -77,19 +77,13 @@ class Domain extends Model
         return false;
     }
 
-    public function find($domain)
+    public function find($domain, $tld)
     {
-        $exp = explode('.', $domain, 2);
+        $result = $this->connection->get('domain_get_details', [
+            'domein' => $domain,
+            'tld'    => $tld,
+        ]);
 
-        if (count($exp) == 2) {
-            $result = $this->connection->get('domain_get_details', [
-                'domein' => $exp[0],
-                'tld'    => $exp[1],
-            ]);
-
-            return $this->createObjectFromResponse($result);
-        }
-
-        throw new \InvalidArgumentException();
+        return $this->createObjectFromResponse($result);
     }
 }
