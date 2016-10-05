@@ -16,6 +16,7 @@ class Dns extends Model
     /**
      * @param $domain
      * @param $tld
+     *
      * @return mixed
      */
     public function find($domain, $tld)
@@ -34,6 +35,7 @@ class Dns extends Model
      * @param $domain
      * @param $tld
      * @param $ttl
+     *
      * @return array
      */
     public function updateTtl($domain, $tld, $ttl)
@@ -49,6 +51,7 @@ class Dns extends Model
 
     /**
      * @param $result
+     *
      * @return mixed
      */
     protected function processDnsRecords($result)
