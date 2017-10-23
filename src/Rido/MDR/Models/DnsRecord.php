@@ -11,6 +11,7 @@ class DnsRecord extends Model
         'domein',
         'tld',
         'record_id',
+        'type',
         'host',
         'address',
         'priority',
