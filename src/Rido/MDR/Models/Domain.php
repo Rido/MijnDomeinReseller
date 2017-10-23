@@ -63,6 +63,7 @@ class Domain extends Model
         'tld_es_bill_type_id',
         'tld_es_bill_idnum',
         'bill_id',
+        'domein',
         'autorenew',
         'lock',
         'ns_id',
