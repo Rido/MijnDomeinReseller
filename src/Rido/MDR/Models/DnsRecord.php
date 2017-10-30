@@ -10,6 +10,7 @@ class DnsRecord extends Model
     protected $fillable = [
         'domein',
         'tld',
+        'ttl',
         'record_id',
         'type',
         'host',
