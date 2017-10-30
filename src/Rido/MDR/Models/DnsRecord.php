@@ -21,6 +21,22 @@ class DnsRecord extends Model
     ];
 
     /**
+     * @param $domain
+     * @param $tld
+     *
+     * @return array
+     */
+    public function find($domain, $tld)
+    {
+        $result = $this->connection->get('dns_get_details', [
+            'domein' => $domain,
+            'tld'    => $tld,
+        ]);
+
+       return $result;
+    }
+
+    /**
      * @param array $attributes
      *
      * @return array
