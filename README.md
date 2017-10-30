@@ -36,8 +36,6 @@ var_dump($domains);
 - [x] Contact
 - [x] Dns
 - [x] DnsRecord
-      - Find records
-      - Modify TTL
 - [ ] DnsSec
 - [ ] DnsSecRecord
 - [x] Domain
