@@ -38,7 +38,7 @@ var_dump($domains);
 - [x] DnsRecord
 - [ ] DnsSec
 - [ ] DnsSecRecord
-- [ ] DnsTemplates
+- [x] DnsTemplates
 - [x] Domain
 - [x] Nameserver
 - [ ] NameserverGlue
