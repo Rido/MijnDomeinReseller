@@ -38,11 +38,11 @@ var_dump($domains);
 - [x] DnsRecord
 - [ ] DnsSec
 - [ ] DnsSecRecord
+- [ ] DnsTemplates
 - [x] Domain
 - [x] Nameserver
 - [ ] NameserverGlue
 - [ ] NewGtld
-- [ ] DnsTemplates
 - [x] Tld
 - [ ] Transfer
 - [x] Whois
