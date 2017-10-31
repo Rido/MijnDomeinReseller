@@ -196,7 +196,7 @@ class Connection
         $errors = [];
 
         foreach ($lines as $line) {
-            $exp = explode('=', $line);
+            $exp = explode('=', $line, 2);
 
             if (count($exp) == 2) {
                 if (strpos($exp[0], 'errnotxt') === 0) {
