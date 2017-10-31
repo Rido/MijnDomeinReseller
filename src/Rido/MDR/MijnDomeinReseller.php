@@ -85,6 +85,16 @@ class MijnDomeinReseller
      *
      * @return Tld
      */
+    public function templates(array $attributes = [])
+    {
+        return new Templates($this->connection, $attributes);
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return Tld
+     */
     public function tld(array $attributes = [])
     {
         return new Tld($this->connection, $attributes);
