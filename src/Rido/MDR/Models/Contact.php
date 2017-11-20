@@ -25,6 +25,23 @@ class Contact extends Model
         'contact_tel_land',
         'contact_rechtsvorm',
         'contact_kvknr',
+
+        'bedrijfsnaam',
+        'rechtsvorm',
+        'regnummer',
+        'btwnummer',
+        'voorletter',
+        'tussenvoegsel',
+        'achternaam',
+        'straat',
+        'huisnr',
+        'huisnrtoev',
+        'postcode',
+        'plaats',
+        'land',
+        'tel_land',
+        'tel',
+        'email'
     ];
 
     /**
