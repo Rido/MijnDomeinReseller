@@ -44,7 +44,7 @@ var_dump($domains);
 - [ ] NameserverGlue
 - [ ] NewGtld
 - [x] Tld
-- [ ] Transfer
+- [x] Transfer
 - [x] Whois
 
 ## More information
