@@ -7,7 +7,9 @@ use Rido\MDR\Models\Dns;
 use Rido\MDR\Models\DnsRecord;
 use Rido\MDR\Models\Domain;
 use Rido\MDR\Models\Nameserver;
+use Rido\MDR\Models\Templates;
 use Rido\MDR\Models\Tld;
+use Rido\MDR\Models\Transfer;
 use Rido\MDR\Models\Whois;
 
 /**
@@ -98,6 +100,16 @@ class MijnDomeinReseller
     public function tld(array $attributes = [])
     {
         return new Tld($this->connection, $attributes);
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return Tld
+     */
+    public function transfer(array $attributes = [])
+    {
+        return new Transfer($this->connection, $attributes);
     }
 
     /**
