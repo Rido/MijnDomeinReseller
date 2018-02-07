@@ -10,6 +10,8 @@ class Contact extends Model
     protected $fillable = [
         'contact_id',
         'contact_bedrijfsnaam',
+        'contact_rechtsvorm',
+        'contact_regnummer',
         'contact_voornaam',
         'contact_voorletter',
         'contact_tussenvoegsel',
