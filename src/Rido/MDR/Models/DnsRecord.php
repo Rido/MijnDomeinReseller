@@ -10,13 +10,31 @@ class DnsRecord extends Model
     protected $fillable = [
         'domein',
         'tld',
+        'ttl',
         'record_id',
+        'type',
         'host',
         'address',
         'priority',
         'weight',
         'port',
     ];
+
+    /**
+     * @param $domain
+     * @param $tld
+     *
+     * @return array
+     */
+    public function find($domain, $tld)
+    {
+        $result = $this->connection->get('dns_get_details', [
+            'domein' => $domain,
+            'tld'    => $tld,
+        ]);
+
+       return $result;
+    }
 
     /**
      * @param array $attributes
@@ -42,6 +60,20 @@ class DnsRecord extends Model
         $this->fill($attributes);
 
         $result = $this->connection->put('dns_record_modify', $this->attributes);
+
+        return $result;
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return array
+     */
+    public function ttl(array $attributes = [])
+    {
+        $this->fill($attributes);
+
+        $result = $this->connection->put('dns_ttl_modify', $this->attributes);
 
         return $result;
     }
