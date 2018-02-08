@@ -43,7 +43,7 @@ class Contact extends Model
         'land',
         'tel_land',
         'tel',
-        'email'
+        'email',
     ];
 
     /**
