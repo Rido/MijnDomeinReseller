@@ -1,7 +1,7 @@
 # MijnDomeinReseller (MDR)
 
 [![Build Status](https://travis-ci.org/Rido/MijnDomeinReseller.svg)](https://travis-ci.org/Rido/MijnDomeinReseller)
-[![StyleCI](https://styleci.io/repos/50727782/shield)](https://styleci.io/repos/50727782)
+[![StyleCI](https://styleci.io/repos/106532343/shield)](https://styleci.io/repos/106532343)
 [![License](https://poser.pugx.org/rido/mijndomeinreseller/license)](https://packagist.org/packages/rido/mijndomeinreseller)
 
 PHP Client for the MDR API.
