@@ -36,8 +36,8 @@ var_dump($domains);
 - [x] Contact
 - [x] Dns
 - [x] DnsRecord
-- [ ] DnsSec
-- [ ] DnsSecRecord
+- [x] DnsSec
+- [x] DnsSecRecord
 - [x] DnsTemplates
 - [x] Domain
 - [x] Nameserver
