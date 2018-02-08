@@ -33,7 +33,7 @@ class DnsRecord extends Model
             'tld'    => $tld,
         ]);
 
-       return $result;
+        return $result;
     }
 
     /**

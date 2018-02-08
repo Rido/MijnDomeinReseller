@@ -16,7 +16,7 @@ class Transfer extends Model
         'datum_update',
 
         'status_melding_count',
-        'status_datum'
+        'status_datum',
     ];
 
     /**
