@@ -5,6 +5,8 @@ namespace Rido\MDR;
 use Rido\MDR\Models\Contact;
 use Rido\MDR\Models\Dns;
 use Rido\MDR\Models\DnsRecord;
+use Rido\MDR\Models\DnsSec;
+use Rido\MDR\Models\DnsSecRecord;
 use Rido\MDR\Models\Domain;
 use Rido\MDR\Models\Nameserver;
 use Rido\MDR\Models\Templates;
@@ -60,6 +62,26 @@ class MijnDomeinReseller
     public function dnsRecord(array $attributes = [])
     {
         return new DnsRecord($this->connection, $attributes);
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return DnsSec
+     */
+    public function dnsSec(array $attributes = [])
+    {
+        return new DnsSec($this->connection, $attributes);
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return DnsSecRecord
+     */
+    public function dnsSecRecord(array $attributes = [])
+    {
+        return new DnsSecRecord($this->connection, $attributes);
     }
 
     /**
