@@ -9,8 +9,8 @@ PHP Client for the MDR API.
 This develop branch is the new modern PHP client for the MDR API. I'm currently working on this version.
 
 ## Contributors
-[![Rido](https://avatars0.githubusercontent.com/u/1889864?s=60&v=4)](Rido)
-[![Bedrijfsportaal](https://avatars3.githubusercontent.com/u/32488174?s=60&v=4)](Bedrijfsportaal)
+[![Rido](https://avatars0.githubusercontent.com/u/1889864?s=60&v=4)](https://github.com/Rido)
+[![Bedrijfsportaal](https://avatars3.githubusercontent.com/u/32488174?s=60&v=4)](https://github.com/Bedrijfsportaal)
 
 ## Usage
 ```php
