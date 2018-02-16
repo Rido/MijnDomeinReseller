@@ -1,6 +1,6 @@
 # MijnDomeinReseller (MDR)
 
-[![Build Status](https://travis-ci.org/Rido/MijnDomeinReseller.svg)](https://travis-ci.org/Rido/MijnDomeinReseller)
+[![Build Status](https://travis-ci.org/bedrijfsportaal/MijnDomeinReseller.svg)](https://travis-ci.org/bedrijfsportaal/MijnDomeinReseller)
 [![StyleCI](https://styleci.io/repos/106532343/shield)](https://styleci.io/repos/106532343)
 [![License](https://poser.pugx.org/rido/mijndomeinreseller/license)](https://packagist.org/packages/rido/mijndomeinreseller)
 
