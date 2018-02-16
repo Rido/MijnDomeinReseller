@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/bedrijfsportaal/MijnDomeinReseller.svg)](https://travis-ci.org/bedrijfsportaal/MijnDomeinReseller)
 [![StyleCI](https://styleci.io/repos/106532343/shield)](https://styleci.io/repos/106532343)
+[![Github all releases](https://img.shields.io/github/downloads/Bedrijfsportaal/MijnDomeinReseller/total.svg)](https://github.com/bedrijfsportaal/MijnDomeinReseller/releases/)
 [![License](https://poser.pugx.org/rido/mijndomeinreseller/license)](https://packagist.org/packages/rido/mijndomeinreseller)
 
 PHP Client for the MDR API.
