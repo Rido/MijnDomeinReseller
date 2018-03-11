@@ -2,41 +2,41 @@
 
 namespace Rido\MDR\Models;
 
-class Templates extends Model 
+class Templates extends Model
 {
-	/**
-	 * @var array
-	 */
-	protected $fillable = [
-		'template_id',
-		'template_name'
-	];
+    /**
+     * @var array
+     */
+    protected $fillable = [
+        'template_id',
+        'template_name',
+    ];
 
-	/**
-	 * @return bool
-	 */
-	public function get() 
-	{
-		if ($result = $this->connection->get('dns_template_list')) {
-			return $result['items'];
-		}
+    /**
+     * @return bool
+     */
+    public function get()
+    {
+        if ($result = $this->connection->get('dns_template_list')) {
+            return $result['items'];
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	/**
-	 * @param $id
-	 *
-	 * @return mixed
-	 */
-	public function find($id)
-	{
-		$result = $this->connection->get('dns_template_get_details', [
-			"template_id" => $id,
-		]);
+    /**
+     * @param $id
+     *
+     * @return mixed
+     */
+    public function find($id)
+    {
+        $result = $this->connection->get('dns_template_get_details', [
+            'template_id' => $id,
+        ]);
 
-		return $result;
-	}
+        return $result;
+    }
 
     /**
      * @param array $attributes
