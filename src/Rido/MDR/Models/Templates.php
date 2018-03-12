@@ -52,7 +52,7 @@ class Templates extends Model
      *
      * @return array
      */
-    public function createTemplate(array $attributes = [])
+    public function add(array $attributes = [])
     {
         $this->fill($attributes);
 
@@ -66,7 +66,7 @@ class Templates extends Model
      *
      * @return array
      */
-    public function createRecord(array $attributes = [])
+    public function create(array $attributes = [])
     {
         $this->fill($attributes);
 
@@ -80,7 +80,7 @@ class Templates extends Model
      *
      * @return array
      */
-    public function removeRecord(array $attributes = [])
+    public function remove(array $attributes = [])
     {
         $this->fill($attributes);
 
