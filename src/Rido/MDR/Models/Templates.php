@@ -8,6 +8,7 @@ class Templates extends Model
      * @var array
      */
     protected $fillable = [
+        'template',
         'template_id',
         'template_name',
         'record_id',
@@ -51,7 +52,21 @@ class Templates extends Model
      *
      * @return array
      */
-    public function create(array $attributes = [])
+    public function createTemplate(array $attributes = [])
+    {
+        $this->fill($attributes);
+
+        $result = $this->connection->put('dns_template_add', $this->attributes);
+
+        return $result;
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return array
+     */
+    public function createRecord(array $attributes = [])
     {
         $this->fill($attributes);
 
@@ -65,7 +80,7 @@ class Templates extends Model
      *
      * @return array
      */
-    public function remove(array $attributes = [])
+    public function removeRecord(array $attributes = [])
     {
         $this->fill($attributes);
 
