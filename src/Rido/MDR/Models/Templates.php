@@ -10,6 +10,15 @@ class Templates extends Model
     protected $fillable = [
         'template_id',
         'template_name',
+        
+        'record_id',
+        'type',
+        'host',
+        'address',
+        'priority',
+        'weight',
+        'port',
+        'ttl',
     ];
 
     /**
