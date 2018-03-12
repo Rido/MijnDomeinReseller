@@ -1,12 +1,17 @@
 # MijnDomeinReseller (MDR)
 
-[![Build Status](https://travis-ci.org/Rido/MijnDomeinReseller.svg)](https://travis-ci.org/Rido/MijnDomeinReseller)
-[![StyleCI](https://styleci.io/repos/50727782/shield)](https://styleci.io/repos/50727782)
+[![Build Status](https://travis-ci.org/bedrijfsportaal/MijnDomeinReseller.svg)](https://travis-ci.org/bedrijfsportaal/MijnDomeinReseller)
+[![StyleCI](https://styleci.io/repos/106532343/shield)](https://styleci.io/repos/106532343)
+[![Github all releases](https://img.shields.io/github/downloads/Bedrijfsportaal/MijnDomeinReseller/total.svg)](https://github.com/bedrijfsportaal/MijnDomeinReseller/releases/)
 [![License](https://poser.pugx.org/rido/mijndomeinreseller/license)](https://packagist.org/packages/rido/mijndomeinreseller)
 
 PHP Client for the MDR API.
 
 This develop branch is the new modern PHP client for the MDR API. I'm currently working on this version.
+
+## Contributors
+[![Rido](https://avatars0.githubusercontent.com/u/1889864?s=60&v=4)](https://github.com/Rido)
+[![Bedrijfsportaal](https://avatars3.githubusercontent.com/u/32488174?s=60&v=4)](https://github.com/Bedrijfsportaal)
 
 ## Usage
 ```php
@@ -36,8 +41,8 @@ var_dump($domains);
 - [x] Contact
 - [x] Dns
 - [x] DnsRecord
-- [ ] DnsSec
-- [ ] DnsSecRecord
+- [x] DnsSec
+- [x] DnsSecRecord
 - [x] DnsTemplates
 - [x] Domain
 - [x] Nameserver

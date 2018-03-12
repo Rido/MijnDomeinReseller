@@ -1,8 +1,14 @@
 <?php
 
+/**
+ * @copyright	Mijn Domein Reseller
+ * @author  Rick Doorakkers
+ * @author  Erik Kraijenoord <erikkraijenoord@gmail.com>
+ */
+
 namespace Rido\MDR\Models;
 
-class DnsRecord extends Model
+class DnsSecRecord extends Model
 {
     /**
      * @var array
@@ -10,14 +16,11 @@ class DnsRecord extends Model
     protected $fillable = [
         'domein',
         'tld',
-        'ttl',
+
+        'flag',
+        'algorithm',
+        'publickey',
         'record_id',
-        'type',
-        'host',
-        'address',
-        'priority',
-        'weight',
-        'port',
     ];
 
     /**
@@ -28,7 +31,7 @@ class DnsRecord extends Model
      */
     public function find($domain, $tld)
     {
-        $result = $this->connection->get('dns_get_details', [
+        $result = $this->connection->get('dnssec_get_details', [
             'domein' => $domain,
             'tld'    => $tld,
         ]);
@@ -41,11 +44,11 @@ class DnsRecord extends Model
      *
      * @return array
      */
-    public function create(array $attributes)
+    public function create(array $attributes = [])
     {
         $this->fill($attributes);
 
-        $result = $this->connection->put('dns_record_add', $this->attributes);
+        $result = $this->connection->put('dnssec_record_add', $this->attributes);
 
         return $result;
     }
@@ -59,21 +62,7 @@ class DnsRecord extends Model
     {
         $this->fill($attributes);
 
-        $result = $this->connection->put('dns_record_modify', $this->attributes);
-
-        return $result;
-    }
-
-    /**
-     * @param array $attributes
-     *
-     * @return array
-     */
-    public function ttl(array $attributes = [])
-    {
-        $this->fill($attributes);
-
-        $result = $this->connection->put('dns_ttl_modify', $this->attributes);
+        $result = $this->connection->put('dnssec_record_modify', $this->attributes);
 
         return $result;
     }
@@ -87,7 +76,7 @@ class DnsRecord extends Model
     {
         $this->fill($attributes);
 
-        $result = $this->connection->put('dns_record_del', $this->attributes);
+        $result = $this->connection->put('dnssec_record_del', $this->attributes);
 
         return $result;
     }
