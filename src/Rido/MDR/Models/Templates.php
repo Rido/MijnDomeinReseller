@@ -8,6 +8,7 @@ class Templates extends Model
      * @var array
      */
     protected $fillable = [
+        'template',
         'template_id',
         'template_name',
         'record_id',
@@ -42,6 +43,20 @@ class Templates extends Model
         $result = $this->connection->get('dns_template_get_details', [
             'template_id' => $id,
         ]);
+
+        return $result;
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return array
+     */
+    public function add(array $attributes = [])
+    {
+        $this->fill($attributes);
+
+        $result = $this->connection->put('dns_template_add', $this->attributes);
 
         return $result;
     }
