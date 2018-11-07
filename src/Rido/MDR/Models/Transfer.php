@@ -11,6 +11,7 @@ class Transfer extends Model
         'transfer_id',
         'domein',
         'status',
+        'tld',
         'status_melding',
         'datum_invoer',
         'datum_update',
@@ -22,13 +23,17 @@ class Transfer extends Model
     /**
      * @return bool
      */
-    public function get()
+    public function get(array $attributes = [])
     {
-        if ($result = $this->connection->get('transfer_list')) {
-            return $result['items'];
-        }
+        $this->fill($attributes);
 
-        return false;
+        $result = $this->connection->get('transfer_list', [
+            'status' => $this->status,
+            'domein' => $this->domein,
+            'tld'    => $this->tld,
+        ]);
+
+        return $result['items'];
     }
 
     /**
