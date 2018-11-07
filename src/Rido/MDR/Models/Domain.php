@@ -82,6 +82,7 @@ class Domain extends Model
         'inaccountdatum',
         'status',
         'duur',
+        'transfer_id',
     ];
 
     /**
