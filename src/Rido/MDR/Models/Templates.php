@@ -66,11 +66,53 @@ class Templates extends Model
      *
      * @return array
      */
+    public function modify(array $attributes = [])
+    {
+        $this->fill($attributes);
+
+        $result = $this->connection->put('dns_template_modify_name', $this->attributes);
+
+        return $result;
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return array
+     */
+    public function del(array $attributes = [])
+    {
+        $this->fill($attributes);
+
+        $result = $this->connection->put('dns_template_del', $this->attributes);
+
+        return $result;
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return array
+     */
     public function create(array $attributes = [])
     {
         $this->fill($attributes);
 
         $result = $this->connection->put('dns_template_record_add', $this->attributes);
+
+        return $result;
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return array
+     */
+    public function update(array $attributes = [])
+    {
+        $this->fill($attributes);
+
+        $result = $this->connection->put('dns_template_record_modify', $this->attributes);
 
         return $result;
     }
