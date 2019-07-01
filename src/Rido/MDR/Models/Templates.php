@@ -11,6 +11,7 @@ class Templates extends Model
         'template',
         'template_id',
         'template_name',
+        'dupliceer',
         'record_id',
         'type',
         'host',
